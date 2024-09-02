@@ -1,0 +1,125 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+* {
+  box-sizing: border-box;
+}
+body {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  transform: translate(-35%, -35%);
+  font-family: "Roboto";
+  color: #ffffff;
+}
+form{
+  position: relative;
+  margin-left: 0px;
+  
+}
+h1{
+  background-color: #000000;
+}
+p{
+  font-weight: 800;
+}
+input[type="text"]{
+  background-color: white;
+  width:100%;
+  color: #003633;
+  text-align: center;
+  
+}
+input[type="text"]:focus{
+  background-color: rgb(3, 3, 3);
+  width:100%;
+  color: #ffffff;
+  text-align: center;
+  
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"]:checked + label span {
+  transform: scale(1.25);
+}
+input[type="radio"]:checked + label .red {
+  border: 3px dashed #711313;
+}
+input[type="radio"]:checked + label .orange {
+  border: 3px dashed #873a08;
+}
+input[type="radio"]:checked + label .yellow {
+  border: 3px dashed #816102;
+}
+input[type="radio"]:checked + label .olive {
+  border: 3px dashed #505a0b;
+}
+input[type="radio"]:checked + label .green {
+  border: 3px dashed #0e4e1d;
+}
+input[type="radio"]:checked + label .teal {
+  border: 3px dashed #003633;
+}
+input[type="radio"]:checked + label .blue {
+  border: 3px dashed #103f62;
+}
+input[type="radio"]:checked + label .violet {
+  border: 3px dashed #321a64;
+}
+input[type="radio"]:checked + label .purple {
+  border: 3px dashed #501962;
+}
+input[type="radio"]:checked + label .pink {
+  border: 3px dashed #851554;
+}
+label {
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+label:hover span {
+  transform: scale(1.40);
+}
+label span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+label span.red {
+  background: #db2828;
+}
+label span.orange {
+  background: #f2711c;
+}
+label span.yellow {
+  background: #fbbd08;
+}
+label span.olive {
+  background: #b5cc18;
+}
+label span.green {
+  background: #21ba45;
+}
+label span.teal {
+  background: #00b5ad;
+}
+label span.blue {
+  background: #2185d0;
+}
+label span.violet {
+  background: #6435c9;
+}
+label span.purple {
+  background: #a333c8;
+}
+label span.pink {
+  background: #e03997;
+}
+button{
+  display: block;
+  width:50%;
+  margin: 25px auto;
+  font-size: 1rem;
+}

@@ -1,0 +1,79 @@
+<%- include('partials/header.ejs'); -%>
+<%console.log(listItems)%>
+  <nav class="categories">
+    <form class="users" action="/user" method="post">
+      <% users.forEach(function(user) { %>
+        <input type="submit" name="user" hidden="true" value="<%= user.id %>" id="<%= user.id %>">
+        <label for="<%= user.id %>" class="btnLabel" style="background-color: <%= user.color %>;">
+          <%= user.name %>
+        </label>
+        <% }); %>
+        <br>
+        <div>
+          <input type="submit" name="add" value="new" id="tab">
+          <label for="tab">Add Family Member</label>
+        </div>
+    </form>
+    <div class="myButtonAlign">
+      <% listCategories.forEach((e)=>{%>
+        <a href="/todo/<%=e.name%>" ><button class="myButton" id="btn<%=e.id%>" style="background-color: <%=e.color %>;"><%=e.name%></button></a>
+      <%})%>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="presentation">
+      <h4>A permalist projet</h4>
+      <hr>
+      <p>A simply CRUD program connected to a SQL with PostgreSQL.<br>
+      This project has been leaded by tutorial onlinbe by <a href="https://www.udemy.com/user/4b4368a3-b5c8-4529-aa65-2056ec31f37e/" target="_blank">Angela Yu,</a>  Developer and Lead Instructor on udemy bootcamp</p>
+      <p>What's the diffeence with the Project</p>
+      <p>Is add in more origin project tutorial, a multiple Lists (FAMILY,BUSINESS,...), and a family Todo Lists (Handle)</p>
+    </div>
+  </div>
+  <div class="box" id="heading">
+    <h1 style="background-color: <%=user.color %>;">
+      <%= user.name %>'s <%= listTitle %>
+    </h1>
+  </div>
+  <div class="box">
+    
+    <%if(locals.listItems.length>0){%>
+      <% for(let item of listItems){console.log(item)%>
+        
+        <div class="item">
+          <form action="/delete" method="post">
+            <input type="checkbox" onchange="this.form.submit()" name="deleteItemId" value="<%= item.id %>">
+          </form>
+  
+          <p id="title<%=item.id%>">
+            <%= item.title.slice(0,22) %>
+          </p>
+  
+          <form class="edit" action="/edit" method="post">
+            <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+            <input id="input<%=item.id%>" type="text" name="updatedItemTitle" value="<%= item.title %>" autocomplete="off" autofocus="true" hidden="true" />
+            <button id="done<%=item.id%>" class="edit" type="submit" hidden><img class="icon"
+                src="/assets/icons/check-solid.svg" alt="tick image"></button>
+          </form>
+          <button id="edit<%=item.id%>" class="edit" onclick="handler('<%=item.id%>')"><img class="icon"
+              src="/assets/icons/pencil-solid.svg" alt="pencil image"></button>
+        </div>
+      <% } %>
+    <%}%>
+
+        <form class="item" action="/add" method="post">
+          <input type="hidden" name="category" value="<%= currentCategoryId %>">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus="true" />
+          <button class="add" type="submit" name="list" value=<%=listTitle %> >+</button>
+        </form>
+  </div>
+
+  <script>
+    function handler(id) {
+      document.getElementById("title" + id).setAttribute("hidden", true)
+      document.getElementById("edit" + id).setAttribute("hidden", true)
+      document.getElementById("done" + id).removeAttribute("hidden")
+      document.getElementById("input" + id).removeAttribute("hidden")
+    }
+  </script>
+  <%- include('partials/footer.ejs'); -%>
